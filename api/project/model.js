@@ -28,8 +28,15 @@ const create = async (newEntry) => {
   return getByID(id)
 }
 
+const getResources = (id) => {
+  return db('project_resources as pr')
+    .join('resources as r','pr.resource_id','r.resource_id')
+    .select('r.*').where('pr.project_id', id)
+}
+
 module.exports = {
   getAll,
   getByID,
   create,
+  getResources
 }

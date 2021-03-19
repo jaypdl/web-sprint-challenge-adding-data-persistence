@@ -23,6 +23,18 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+/*****!!!! Stretch Endpoints !!!!*****/
+// [GET] /:id/resources (Returns all resources assigned to project)
+router.get('/:id/resources', async (req, res, next) => {
+  try {
+    const projResources = await Project.getResources(req.params.id)
+    res.json(projResources)
+  } catch (err) {
+    next(err)
+  }
+})
+
+
 // Error catching
 router.use((err, req, res, next) => { // eslint-disable-line
   res.status(500).json({
