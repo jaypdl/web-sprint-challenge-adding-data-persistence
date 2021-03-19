@@ -15,14 +15,14 @@ const getByID = async (id) => {
   const project = await db('projects').where('project_id', id).first()
   return {
     ...project,
-    project_completed: project.project_completed === 1 ? true : false
+    project_completed: project.project_completed ? true : false
   }
 }
 
 const create = async (newEntry) => {
   const processedEntry = {
     ...newEntry,
-    project_completed: newEntry.project_completed === true ? 1 : 0
+    project_completed: newEntry.project_completed ? 1 : 0
   }
   const id = await db('projects').insert(processedEntry)
   return getByID(id)
