@@ -1,6 +1,11 @@
 // build your `/api/projects` router here
 const router = require('express').Router()
 
+/***** Base Endpoint: /api/projects ******/
+// [GET] / (Returns all projects)
+
+// [POST] / (Creates new project and returns)
+
 
 // Error catching
 router.use((err, req, res, next) => { // eslint-disable-line
