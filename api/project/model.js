@@ -28,6 +28,7 @@ const create = async (newEntry) => {
   return getByID(id)
 }
 
+/*****!!!! Models for Stretch Endpoints !!!!*****/
 const getResources = (id) => {
   return db('project_resources as pr')
     .join('resources as r','pr.resource_id','r.resource_id')
