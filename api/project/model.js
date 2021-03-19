@@ -35,9 +35,20 @@ const getResources = (id) => {
     .select('r.*').where('pr.project_id', id)
 }
 
+const getTasks = async (id) => {
+  const projTasks = await db('tasks').where('project_id', id)
+  return projTasks.map(task => {
+    return {
+      ...task,
+      task_completed: task.completed ? true : false
+    }
+  })
+}
+
 module.exports = {
   getAll,
   getByID,
   create,
-  getResources
+  getResources,
+  getTasks
 }

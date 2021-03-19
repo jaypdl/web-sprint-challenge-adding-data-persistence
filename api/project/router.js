@@ -34,6 +34,15 @@ router.get('/:id/resources', async (req, res, next) => {
   }
 })
 
+// [GET] /:id/tasks (Returns all tasks assigned to project)
+router.get('/:id/tasks', async (req, res, next) => {
+  try {
+    const projTasks = await Project.getTasks(req.params.id)
+    res.json(projTasks)
+  } catch (err) {
+    next(err)
+  }
+})
 
 // Error catching
 router.use((err, req, res, next) => { // eslint-disable-line
